@@ -11,7 +11,7 @@ namespace SIMPLE_LOGIN_SIGNUP_API.Models
     public class DBCONTEXT : DbContext
     {
         public DBCONTEXT(DbContextOptions options) : base(options) { }
-        DbSet<User> users
+        public DbSet<User> Users
         {
             get;
             set;
