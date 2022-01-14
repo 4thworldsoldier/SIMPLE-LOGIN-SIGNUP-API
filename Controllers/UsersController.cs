@@ -31,13 +31,14 @@ namespace SIMPLE_LOGIN_SIGNUP_API.Controllers
             _mapper = mapper;
             _configuration = configuration;
         }
+        //[ModelBinder(AuthenticateModel = "model")]
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody] AuthenticateModel model)
         {
-            var user = _userService.Authenticate(model.Username, model.Password);
+            var user = _userService.Authenticate(model.Email, model.Password);
 
             if (user == null)
-                return BadRequest(new { message = "Username or password is incorrect" });
+                return BadRequest(new { message = "Email or password is incorrect" });
 
             //var tokenHandler = new JwtSecurityTokenHandler();
             //var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
@@ -57,7 +58,7 @@ namespace SIMPLE_LOGIN_SIGNUP_API.Controllers
             return Ok(new
             {
                 Id = user.Id,
-                Username = user.Username,
+                Email = user.Email,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 //Token = tokenString

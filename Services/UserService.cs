@@ -27,14 +27,14 @@ namespace SIMPLE_LOGIN_SIGNUP_API.Services
             _context = context;
         }
 
-        public User Authenticate(string username, string password)
+        public User Authenticate(string email, string password)
         {
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
                 return null;
 
-            var user = _context.Users.SingleOrDefault(x => x.Username == username);
+            var user = _context.Users.SingleOrDefault(x => x.Email == email);
 
-            // check if username exists
+            // check if email exists
             if (user == null)
                 return null;
 
@@ -52,8 +52,8 @@ namespace SIMPLE_LOGIN_SIGNUP_API.Services
             if (string.IsNullOrWhiteSpace(password))
                 throw new AppException("Password is required");
 
-            if (_context.Users.Any(x => x.Username == user.Username))
-                throw new AppException("Username \"" + user.Username + "\" is already taken");
+            if (_context.Users.Any(x => x.Email == user.Email))
+                throw new AppException("Email \"" + user.Email + "\" is already taken");
 
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
