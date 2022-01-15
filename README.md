@@ -8,6 +8,6 @@ the api is hosted on microsoft clould platform azure
 
 url https://signinlogin.azurewebsites.net/
 NB this api is not configured with swagger or any other third party documentation schema hence the error page when u browse to the above endpoint
-However the service is up and running, test endpoints https://signinlogin.azurewebsites.net/users/authenticate and https://signinlogin.azurewebsites.net/users
+However the service is up and running, test endpoints https://signinlogin.azurewebsites.net/users/authenticate and https://signinlogin.azurewebsites.net/users/register
 
 the service is built with asp.net core 3.1 and c#, entity framework is used as the code to data layer engine with ms sql as the database 
